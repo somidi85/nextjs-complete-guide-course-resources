@@ -2,7 +2,7 @@ import sql from "better-sqlite3";
 const db = sql("meals.db");
 
 export async function getMeals() {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   // throw new Error("Something went wrong");
 
@@ -10,7 +10,7 @@ export async function getMeals() {
   return meals;
 }
 
-export async function getMeal(slug) {
-  const meal = db.prepare("SELECT * FROM meals WHERE slug = ?").get(slug);
-  return meal;
+export function getMeal(slug) {
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
+  return db.prepare("SELECT * FROM meals WHERE slug = ?").get(slug);
 }
